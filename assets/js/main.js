@@ -35,9 +35,9 @@ START_BUTTON_EL.addEventListener('click', function(){
         }
     }
 
-    setTimeout(myFunction, 3000)
+    setTimeout(tempo_scaduto, 3000)
 
-    function myFunction() {
+    function tempo_scaduto() {
         for(let i = 0; i < 5; i++) {
             div_number_el[i].innerHTML = ''
         }
@@ -52,17 +52,24 @@ SEND_BUTTON_EL.addEventListener('click', function (event) {
     event.preventDefault()
 
     const user_submit = document.getElementById('userNumber').value
-    console.log(user_submit)
-     USER_NUMBER.push(user_submit)
+    console.log(user_submit);
+    if(!USER_NUMBER.includes(user_submit)) {
+
+        USER_NUMBER.push(user_submit)
+    }
+    FORM_EL.reset()
     
 
-     if(USER_NUMBER.length == 5)  {
-        for(let i = 0; i < 5; i++) {
+    if(USER_NUMBER.length == 5)  {
+
+        let i = 0
+        while( i < 5 ) {
 
             if(USER_NUMBER.includes(RANDOM_NUMBER[i])) {
                 PUNTEGGIO += 1;
             }
+            i++
         }
         alert(`ti sei ricordato ${PUNTEGGIO} numeri su 5`)
-     }
+    }
 })
