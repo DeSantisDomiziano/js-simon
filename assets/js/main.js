@@ -51,7 +51,7 @@ START_BUTTON_EL.addEventListener('click', function(){
 SEND_BUTTON_EL.addEventListener('click', function (event) {
     event.preventDefault()
 
-    const user_submit = document.getElementById('userNumber').value
+    const user_submit = parseInt(document.getElementById('userNumber').value)
     console.log(user_submit);
     if(!USER_NUMBER.includes(user_submit)) {
 
@@ -65,11 +65,13 @@ SEND_BUTTON_EL.addEventListener('click', function (event) {
         let i = 0
         while( i < 5 ) {
 
-            if(USER_NUMBER.includes(RANDOM_NUMBER[i])) {
+            if(RANDOM_NUMBER.includes(USER_NUMBER[i])) {
                 PUNTEGGIO += 1;
             }
             i++
         }
-        alert(`ti sei ricordato ${PUNTEGGIO} numeri su 5`)
+        
+        FORM_EL.insertAdjacentHTML('afterend', `ti sei ricordato ${PUNTEGGIO} numeri su 5`)
+    
     }
 })
