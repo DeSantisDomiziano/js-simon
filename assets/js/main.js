@@ -13,6 +13,7 @@ const FIELD_GAME_EL = document.querySelector('.col-12.text-center')
 const TIMER_EL = document.getElementById('timer')
 const RANDOM_NUMBER = []
 const USER_NUMBER = []
+let PUNTEGGIO = 0
 
 
 START_BUTTON_EL.addEventListener('click', function(){
@@ -49,4 +50,19 @@ START_BUTTON_EL.addEventListener('click', function(){
 
 SEND_BUTTON_EL.addEventListener('click', function (event) {
     event.preventDefault()
+
+    const user_submit = document.getElementById('userNumber').value
+    console.log(user_submit)
+     USER_NUMBER.push(user_submit)
+    
+
+     if(USER_NUMBER.length == 5)  {
+        for(let i = 0; i < 5; i++) {
+
+            if(USER_NUMBER.includes(RANDOM_NUMBER[i])) {
+                PUNTEGGIO += 1;
+            }
+        }
+        alert(`ti sei ricordato ${PUNTEGGIO} numeri su 5`)
+     }
 })
